@@ -42,17 +42,13 @@ class PostListSerializer(ModelSerializer):
         model  = Post
         fields = [
             'id', 'title', 'nickname', 'content', 'tags', 'created_at',\
-            'likes', 'views', 'like_status'
+            'likes', 'views', 'like_status', 'status'
         ]
         extra_kwargs = {
             'id': {'read_only': True}
         }
         
              
-class PostDetailSerializer(ModelSerializer):
-    pass
-
-
 class PostCreateSerializer(ModelSerializer):
     tags       = TagSerializer(many=True)
     nickname   = serializers.SerializerMethodField()
@@ -91,4 +87,6 @@ class PostCreateSerializer(ModelSerializer):
             'id': {'read_only': True}
         }
         
-        
+
+class PostDetailSerializer(ModelSerializer):
+    pass

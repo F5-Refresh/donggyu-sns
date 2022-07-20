@@ -5,14 +5,14 @@ from drf_yasg.utils   import swagger_auto_schema
 
 from rest_framework.views       import APIView
 from rest_framework.response    import Response
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 
 from posts.models         import Post
 from posts.serializers    import PostCreateSerializer, PostListSerializer, PostDetailSerializer
 from core.utils.decorator import query_debugger
 
 
-class PostListView(APIView):
+class PostView(APIView):
     
     permission_classes = [IsAuthenticated]
     
@@ -68,19 +68,6 @@ class PostListView(APIView):
                    
         serializer = PostListSerializer(posts, many=True, context={'user': user})
         return Response(serializer.data, status=200)
-  
-  
-class PostDetailView(APIView):
-    
-    permission_classes = [AllowAny]
-    
-    def get(self, request, post_id):
-        pass  
-
-
-class PostCreateView(APIView):
-    
-    permission_classes = [IsAuthenticated]
     
     @swagger_auto_schema(request_body=PostCreateSerializer, responses={201: PostCreateSerializer})        
     def post(self, request):
@@ -91,12 +78,15 @@ class PostCreateView(APIView):
             serializer.save(users=user)
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
-
-
-class PostUpdateDeleteView(APIView):
+  
+  
+class PostDetailView(APIView):
     
     permission_classes = [IsAuthenticated]
-
+    
+    def get(self, request, post_id):
+        pass
+    
     def pathch(self, request, post_id):
         pass
     
