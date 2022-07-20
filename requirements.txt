@@ -8,5 +8,5 @@ mysqlclient==2.1.1
 PyMySQL==1.0.2
 python-dotenv==0.20.0
 bcrypt==3.2.0
-drf-yasg==1.21.3
+drf-yasg==1.20.3
 cffi==1.15.1
