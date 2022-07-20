@@ -7,16 +7,16 @@ from django.urls    import path, re_path, include
 
 schema_view = get_schema_view(
     openapi.Info(
-        title='sns API',
-        default_version='v1',
-        description='sns-project',
+        title           = 'sns API',
+        default_version = 'v1',
+        description     = 'sns-project',
     ),
-    public=True,
-    permission_classes=(permissions.AllowAny,),
+    public = True,
+    permission_classes = (permissions.AllowAny,),
 )
 
 urlpatterns = [
-
+    path('api/users', include('users.urls')),
 ]
 
 urlpatterns += [
