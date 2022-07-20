@@ -49,7 +49,9 @@ APPEND_SLASH  = False
 # Application definition
 
 PROJECT_APPS = [
-
+    'core',
+    'users',
+    'posts',
 ]
 
 THIRD_PARTY_APPS = [
