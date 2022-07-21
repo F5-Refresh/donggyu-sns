@@ -13,7 +13,7 @@ from posts.serializers import PostCreateSerializer, PostListSerializer, PostDeta
 from users.models      import Like
 
 from core.utils.decorator           import query_debugger
-from core.utils.get_obj_n_check_err import GetPostDetail, GetUserPostDetail
+from core.utils.get_obj_n_check_err import GetPostDetail, GetUserPostDetail, GetClientIp
 
 
 class PostView(APIView):
@@ -142,13 +142,18 @@ class PostDetailView(APIView):
         user = request.user
         
         """
+        요청 클라이언트 ip정보 추출
+        """
+        ip = GetClientIp.get_client_ip(request)
+        
+        """
         게시물 객체 확인
         """
         post, err = GetPostDetail.get_post_n_check_error(post_id)
         if err:
             return Response({'detail': err}, status=400)
     
-        serializer = PostDetailSerializer(post, context={'user': user})
+        serializer = PostDetailSerializer(post, context={'user': user, 'ip': ip})
         return Response(serializer.data, status=200)        
     
     @swagger_auto_schema(

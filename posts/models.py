@@ -31,4 +31,15 @@ class Tag(TimeStampModel):
         return self.name
 
     class Meta:
-        db_table = 'tags'    
+        db_table = 'tags'
+        
+
+class AccessIp(TimeStampModel):
+    ip    = models.CharField(max_length=200)
+    posts = models.ForeignKey('Post', on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.ip
+    
+    class Meta:
+        db_table = 'access_ip'
