@@ -6,6 +6,15 @@ from users.models import User
 
 
 class GetPostDetail:
+    """
+    Assignee: 김동규
+    
+    param: post_id
+    return: obj, err
+    detail:
+      - 게시물 id를 통해 게시물 객체(정보)의 존재여부 확인
+      - 게시물의 좋아요 개수도 함께 확인
+    """
     
     def get_post_n_check_error(post_id: int) -> Tuple[Any, str]:
         try:
@@ -21,6 +30,15 @@ class GetPostDetail:
     
 
 class GetUserPostDetail:
+    """
+    Assignee: 김동규
+    
+    param: post_id, user
+    return: obj, err
+    detail:
+      - 게시물 id를 통해 게시물 객체(정보)의 존재여부 확인
+      - 게시물 객체의 유저정보와 API를 호출한 유저의 정보를 대조
+    """
     
     def get_post_n_check_error(post_id: int, user: User) -> Tuple[Any, str]:
         try:
