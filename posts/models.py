@@ -11,7 +11,7 @@ class Post(TimeStampModel):
     ]
     
     users   = models.ForeignKey('users.User', on_delete=models.CASCADE)
-    tags    = models.ForeignKey('Tag', on_delete=models.CASCADE)
+    tags    = models.ManyToManyField('Tag', related_name='posts')
     content = models.TextField()
     title   = models.CharField(max_length=100)
     views   = models.PositiveIntegerField(default=0)
