@@ -3,7 +3,7 @@ from django.db                  import transaction
 from rest_framework             import serializers
 from rest_framework.serializers import ModelSerializer
 
-from posts.models import Post, Tag
+from posts.models import Post, Tag, AccessIp
 from users.models import Like
 
 
@@ -142,15 +142,24 @@ class PostDetailSerializer(ModelSerializer):
         return (obj.created_at).strftime('%Y-%m-%d %H:%M')
     
     """
-    조회수 증가 기능
-    - 현재는 해당 API가 호출되기만 하면 조회수가 증가함(제한X)
-    * TODO: 조회수가 1인당 1번만 증가하도록 제한
+    조회수 증가:
+      - 조회수가 ip당 1회만 증가하도록 제한
     """
+    @transaction.atomic()
     def get_views(self, obj: Post) -> int:
-        obj.views += 1
-        obj.save()
+        ip   = self.context.get('ip')
+        post = obj
+        
+        if not AccessIp.objects.filter(ip=ip, posts=post).exists():
+            obj.views += 1
+            obj.save()
+            
+            AccessIp.objects\
+                    .create(ip=ip, posts=post)
+                    
+            return obj.views
         return obj.views
-    
+
     class Meta:
         model  = Post
         fields = [
@@ -184,6 +193,7 @@ class PostUpdateSerializer(ModelSerializer):
     게시물/해시태그 수정
       - 하나의 게시물을 수정할 때, 여러 개의 해시태그를 함께 수정함
     """
+    @transaction.atomic()
     def update(self, instance: Post, validated_data):
         instance.tags.clear()
         

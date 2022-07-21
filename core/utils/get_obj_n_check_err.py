@@ -52,3 +52,34 @@ class GetUserPostDetail:
             return None, '다른 유저의 게시물입니다.'
         
         return post, None
+    
+    
+class GetClientIp:
+    """
+    Assignee: 김동규
+    
+    param: request
+    return: obj
+    detail:
+      - request obj에서 요청 client의 IP정보를 추출함
+    """
+    
+    def get_client_ip(request: object) -> object:
+        """
+        HTTP_X_FORWARDED_FOR(XFF):
+          - XFF는 HTTP Header 중 하나로 HTTP Server 에 요청한 Client 의 IP 를 식별하기 위한 표준임
+          - HTTP_X_FORWARDED_FOR: client, proxy1, proxy2 ..
+            * client: 실제 클라이언트의 IP
+            * proxy0: Proxy 서버의 IP
+            
+        REMOTE_ADDR:
+          - TCP/IP 접속 그 자체에서 생성되는 값으로, 접속자의 IP 주소 값을 가지고 있음
+        """
+        
+        HTTP_X_FORWARDED_FOR = request.META.get('HTTP_X_FORWARDED_FOR')
+
+        if HTTP_X_FORWARDED_FOR:
+            IP = HTTP_X_FORWARDED_FOR.split(',')[0]
+        
+        IP = request.META.get('REMOTE_ADDR')
+        return IP
