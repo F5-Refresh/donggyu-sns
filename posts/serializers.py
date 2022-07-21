@@ -8,6 +8,12 @@ from users.models import Like
 
 
 class TagSerializer(ModelSerializer):
+    """
+    Assignee: 김동규
+    
+    detail: (해시)태그 데이터 시리얼라이저[Many-To-Many]
+    model: Tag
+    """
     
     class Meta:
         model  = Tag
@@ -18,6 +24,13 @@ class TagSerializer(ModelSerializer):
         
 
 class PostListSerializer(ModelSerializer):
+    """
+    Assignee: 김동규
+    
+    detail: 게시물 리스트 조회 시리얼라이저[GET] 
+    model: Post
+    """
+    
     likes       = serializers.SerializerMethodField()
     like_status = serializers.SerializerMethodField()
     nickname    = serializers.SerializerMethodField()
@@ -50,6 +63,13 @@ class PostListSerializer(ModelSerializer):
         
              
 class PostCreateSerializer(ModelSerializer):
+    """
+    Assignee: 김동규
+    
+    detail: 게시물 생성 시리얼라이저[POST] 
+    model: Post
+    """
+    
     tags       = TagSerializer(many=True)
     nickname   = serializers.SerializerMethodField()
     created_at = serializers.SerializerMethodField()
@@ -60,6 +80,10 @@ class PostCreateSerializer(ModelSerializer):
     def get_created_at(self, obj: Post) -> str:
         return (obj.created_at).strftime('%Y-%m-%d %H:%M')
     
+    """
+    게시물/해시태그 생성
+      - 하나의 게시물을 생성할 때, 여러 개의 해시태그를 함께 생성함
+    """
     @transaction.atomic()
     def create(self, validated_data):
         hashtags = validated_data.pop('tags', None)
@@ -89,6 +113,13 @@ class PostCreateSerializer(ModelSerializer):
         
 
 class PostDetailSerializer(ModelSerializer):
+    """
+    Assignee: 김동규
+    
+    detail: 게시물 상세 조회 시리얼라이저[GET] 
+    model: Post
+    """
+    
     likes       = serializers.SerializerMethodField()
     like_status = serializers.SerializerMethodField()
     nickname    = serializers.SerializerMethodField()
@@ -110,7 +141,11 @@ class PostDetailSerializer(ModelSerializer):
     def get_created_at(self, obj: Post) -> str:
         return (obj.created_at).strftime('%Y-%m-%d %H:%M')
     
-    # TODO
+    """
+    조회수 증가 기능
+    - 현재는 해당 API가 호출되기만 하면 조회수가 증가함(제한X)
+    * TODO: 조회수가 1인당 1번만 증가하도록 제한
+    """
     def get_views(self, obj: Post) -> int:
         obj.views += 1
         obj.save()
@@ -128,6 +163,13 @@ class PostDetailSerializer(ModelSerializer):
         
         
 class PostUpdateSerializer(ModelSerializer):
+    """
+    Assignee: 김동규
+    
+    detail: 게시물 수정 시리얼라이저[PATCH] 
+    model: Post
+    """
+    
     nickname    = serializers.SerializerMethodField()
     created_at  = serializers.SerializerMethodField()
     tags        = TagSerializer(many=True)
@@ -138,6 +180,10 @@ class PostUpdateSerializer(ModelSerializer):
     def get_created_at(self, obj: Post) -> str:
         return (obj.created_at).strftime('%Y-%m-%d %H:%M')
     
+    """
+    게시물/해시태그 수정
+      - 하나의 게시물을 수정할 때, 여러 개의 해시태그를 함께 수정함
+    """
     def update(self, instance: Post, validated_data):
         instance.tags.clear()
         
