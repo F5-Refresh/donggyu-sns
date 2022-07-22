@@ -61,14 +61,14 @@ class GetClientIp:
     param: request
     return: obj
     detail:
-      - request obj에서 요청 client의 IP정보를 추출함
+      - request obj에서 요청 클라이언트의 IP정보를 추출함
     """
     
     def get_client_ip(request: object) -> object:
         """
         HTTP_X_FORWARDED_FOR(XFF):
-          - XFF는 HTTP Header 중 하나로 HTTP Server 에 요청한 Client 의 IP 를 식별하기 위한 표준임
-          - HTTP_X_FORWARDED_FOR: client, proxy1, proxy2 ..
+          - XFF는 HTTP Header 중 하나로 HTTP Server에 요청한 Client의 IP를 식별하기 위한 표준임
+          - HTTP_X_FORWARDED_FOR: client, proxy1, proxy2 etc..
             * client: 실제 클라이언트의 IP
             * proxy0: Proxy 서버의 IP
             
