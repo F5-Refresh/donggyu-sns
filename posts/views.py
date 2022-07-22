@@ -81,21 +81,20 @@ class PostView(APIView):
         
         """
         해시태그 검색기능
-        - 현재는 특정 태그가 포함 되어있는 모든 게시물을 필터링해서 가져옴
-        * TODO:
-          - 예시 1) some-url?hastags=서울     >> “서울" 해시태그를 가진 게시글 목록.
-          - 예시 2) some-url?hastags=서울,맛집 >> “서울"과 “맛집” 해시태그를 모두 가진 게시글 목록. 
-          - ex) “서울,맛집” 검색 시 >> #서울(검색안됨) // #서울맛집 (검색안됨) // #서울,#맛집(검색됨)
         """    
         if hashtags: 
             tags = hashtags.split(',')
         
             q &= Q(tags__name__in=tags)
-            
+        
+        """
+        TODO:
+          * resolve this issue >> Post.objects.filter(Q(tags__name__in=tags)) without annotate()
+        """    
         posts = Post.objects\
                     .annotate(likes=Count('like'))\
                     .select_related('users')\
-                    .prefetch_related('tags')\
+                    .prefetch_related('tags', 'like_set')\
                     .filter(q)\
                     .exclude(status__iexact=status)\
                     .order_by(sort_set[sort])[offset:offset+limit]

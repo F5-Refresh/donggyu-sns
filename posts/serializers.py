@@ -38,7 +38,7 @@ class PostListSerializer(ModelSerializer):
     tags        = TagSerializer(many=True)
     
     def get_likes(self, obj: Post) -> int:
-        return obj.likes
+        return obj.like_set.count()
     
     def get_like_status(self, obj: Post) -> bool:
         user = self.context.get('user')
