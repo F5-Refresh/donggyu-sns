@@ -41,7 +41,7 @@ class PostListTest(APITestCase):
     maxDiff = None
     
     """
-    테스트 데이터 셋업(유저/게시글/태그/좋아요 정보)
+    테스트 데이터 셋업(유저/게시물/태그/좋아요 정보)
     """
     
     @classmethod
@@ -88,7 +88,6 @@ class PostListTest(APITestCase):
                              title   = 'testTitle1',
                              content = 'testContent1',
                              views   = 1
-                             
                          )
                          
         cls.f_post.tags.add(cls.f_tag)

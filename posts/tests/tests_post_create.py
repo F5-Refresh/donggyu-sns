@@ -84,7 +84,6 @@ class PostCreateTest(APITestCase):
                 'title'   : 'testPost',
                 'nickname': 'userTest',
                 'content' : 'testContent',
-                'status'  : 'in_use',
                 'tags'    : [
                     {
                         'id'  : 1,
