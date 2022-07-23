@@ -75,7 +75,7 @@ class PostDeleteTest(APITestCase):
                               id      = 1,
                               users   = self.f_user,
                               title   = 'testTitle1',
-                              content = 'testContent1',
+                              content = 'testContent1'
                           )
                          
         self.f_post.tags.add(self.f_tag)
@@ -86,7 +86,7 @@ class PostDeleteTest(APITestCase):
                               id      = 2,
                               users   = self.s_user,
                               title   = 'testTitle2',
-                              content = 'testContent2',
+                              content = 'testContent2'
                           )
                          
         self.s_post.tags.add(self.s_tag)
