@@ -21,7 +21,6 @@ class GetPostDetail:
             post = Post.objects\
                        .annotate(likes=Count('like'))\
                        .select_related('users')\
-                       .prefetch_related('tags')\
                        .get(id=post_id)
         except Post.DoesNotExist:
             return None, f'게시글 {post_id}(id)는 존재하지 않습니다.'
