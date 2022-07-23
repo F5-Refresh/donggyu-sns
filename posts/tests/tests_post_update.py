@@ -24,14 +24,14 @@ class PostUpdateTest(APITestCase):
         1) token(Authentication/Authorization)
             - 인증/인가에 통과한 유저인지 확인(force_authenticate 메소드 사용)
         2) post obj
-            - 게시물 존재여부 확인(존재하지 않는 게시물은 수정할 수 없음)
-            - 게시물 유저정보 확인(다른 유저의 게시물은 수정할 수 없음)
+            - 게시글 존재여부 확인(존재하지 않는 게시글은 수정할 수 없음)
+            - 게시글 유저정보 확인(다른 유저의 게시글은 수정할 수 없음)
     """
     
     maxDiff = None
     
     """
-    테스트 데이터 셋업(유저/게시물/태그 정보)
+    테스트 데이터 셋업(유저/게시글/태그 정보)
     """
     
     def setUp(self):
@@ -211,7 +211,7 @@ class PostUpdateTest(APITestCase):
         self.assertEqual(
             response.json(),
             {
-                'detail': '게시물 10(id)는 존재하지 않습니다.'
+                'detail': '게시글 10(id)는 존재하지 않습니다.'
             }
         )
     
@@ -239,6 +239,6 @@ class PostUpdateTest(APITestCase):
         self.assertEqual(
             response.json(),
             {
-                'detail': '다른 유저의 게시물입니다.'
+                'detail': '다른 유저의 게시글입니다.'
             }
         )

@@ -27,7 +27,7 @@ class PostListSerializer(ModelSerializer):
     """
     Assignee: 김동규
     
-    detail: 게시물 리스트 조회 시리얼라이저[GET] 
+    detail: 게시글 리스트 조회 시리얼라이저[GET] 
     model: Post
     """
     
@@ -66,7 +66,7 @@ class PostCreateSerializer(ModelSerializer):
     """
     Assignee: 김동규
     
-    detail: 게시물 생성 시리얼라이저[POST] 
+    detail: 게시글 생성 시리얼라이저[POST] 
     model: Post
     """
     
@@ -81,8 +81,8 @@ class PostCreateSerializer(ModelSerializer):
         return (obj.created_at).strftime('%Y-%m-%d %H:%M')
     
     """
-    게시물/해시태그 생성
-      - 하나의 게시물을 생성할 때, 여러 개의 해시태그를 함께 생성함
+    게시글/해시태그 생성
+      - 하나의 게시글을 생성할 때, 여러 개의 해시태그를 함께 생성함
     """
     @transaction.atomic()
     def create(self, validated_data):
@@ -116,7 +116,7 @@ class PostDetailSerializer(ModelSerializer):
     """
     Assignee: 김동규
     
-    detail: 게시물 상세 조회 시리얼라이저[GET] 
+    detail: 게시글 상세 조회 시리얼라이저[GET] 
     model: Post
     """
     
@@ -175,7 +175,7 @@ class PostUpdateSerializer(ModelSerializer):
     """
     Assignee: 김동규
     
-    detail: 게시물 수정 시리얼라이저[PATCH] 
+    detail: 게시글 수정 시리얼라이저[PATCH] 
     model: Post
     """
     
@@ -190,8 +190,8 @@ class PostUpdateSerializer(ModelSerializer):
         return (obj.created_at).strftime('%Y-%m-%d %H:%M')
     
     """
-    게시물/해시태그 수정
-      - 하나의 게시물을 수정할 때, 여러 개의 해시태그를 함께 수정함
+    게시글/해시태그 수정
+      - 하나의 게시글을 수정할 때, 여러 개의 해시태그를 함께 수정함
     """
     @transaction.atomic()
     def update(self, instance: Post, validated_data):
