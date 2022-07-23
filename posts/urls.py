@@ -4,7 +4,7 @@ from posts.views import PostView, PostDetailView, PostRestoreView, PostLikeView
 
 
 """
-게시물 url patterns
+게시글 url patterns
 """
 urlpatterns = [
     path('', PostView.as_view()),
