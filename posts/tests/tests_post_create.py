@@ -22,8 +22,8 @@ class PostCreateTest(APITestCase):
     3. Parameters
         1) token(Authentication/Authorization)
             - 인증/인가에 통과한 유저인지 확인(force_authenticate 메소드 사용)
-        2) request body(name/budget)
-            - 필수 파라미터 확인
+        2) request body
+            - 필수 파라미터 확인: title/content/tags
     """
     
     maxDiff = None
