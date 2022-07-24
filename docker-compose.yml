@@ -13,7 +13,6 @@ services:
       - bash
       - -c
       - |
-        python manage.py wait_for_db -t 120
         python manage.py migrate
         echo yes | python manage.py collectstatic
         gunicorn sns.wsgi:application --bind 0.0.0.0:8000
