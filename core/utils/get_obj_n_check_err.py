@@ -79,6 +79,7 @@ class GetClientIp:
 
         if HTTP_X_FORWARDED_FOR:
             IP = HTTP_X_FORWARDED_FOR.split(',')[0]
-        
-        IP = request.META.get('REMOTE_ADDR')
+        else:
+            IP = request.META.get('REMOTE_ADDR')
+
         return IP
