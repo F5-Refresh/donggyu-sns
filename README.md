@@ -1,9 +1,22 @@
 ## Intro
 
-원티드X프리온보딩 4주차 개인과제 레포(repository)입니다.
+> **원티드X프리온보딩 4주차 개인과제 레포지토리(repository)입니다.**
+
+<br>
 
 본 과제에서 요구하는 서비스는 SNS(Social Networking Service)입니다.<br>
 사용자는 SNS 서비스에 접속하여, 게시글을 업로드하고 관리(수정/삭제/복구)할 수 있습니다. 또한 다른 사람의 게시글을 확인하고, 좋아요를 누를 수 있습니다.
+
+<br>
+
+> **목차**
+
+- [Environments](#environments)
+- [Project](#project)
+- [Etc](#etc)
+
+<br>
+
 
 <br>
 <hr>
@@ -412,8 +425,7 @@
   ## AWS RDS ##
   DATABASES = {
       'default': {
-          'ENGINE'  : 'django.
-          .backends.mysql',
+          'ENGINE'  : 'django..backends.mysql',
           'NAME'    : get_env_variable('RDS_DB_NAME'),
           'USER'    : get_env_variable('RDS_USERNAME'),
           'PASSWORD': get_env_variable('RDS_PASSWORD'),
