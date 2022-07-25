@@ -249,19 +249,19 @@
 
 > **Test**
 - #### 🚦 테스트코드 작성
-  #### 총 테스트코드: 59 case
+  #### 전체 테스트코드: 59 cases
   
   |ID|Feature|Method|Success cases|Fail cases|
   |---|----|----|----|----|
-  |1|유저 회원가입|POST|1 case|14 case|
-  |2|유저 로그인|POST|1 case|4 case|
-  |3|게시글 생성|POST|1 case|4 case|
-  |4|게시글 리스트|GET|12 case|1 case|
-  |5|게시글 상세|GET|1 case|2 case|
-  |6|게시글 수정|PATCH|1 case|3 case|
-  |7|게시글 삭제|DELETE|1 case|4 case|
-  |8|게시글 복구|PATCH|1 case|4 case|
-  |9|게시글 좋아요(생성/취소)|POST|2 case|2 case|
+  |1|유저 회원가입|POST|1 case|14 cases|
+  |2|유저 로그인|POST|1 case|4 cases|
+  |3|게시글 생성|POST|1 case|4 cases|
+  |4|게시글 리스트|GET|12 cases|1 case|
+  |5|게시글 상세|GET|1 case|2 cases|
+  |6|게시글 수정|PATCH|1 case|3 cases|
+  |7|게시글 삭제|DELETE|1 case|4 cases|
+  |8|게시글 복구|PATCH|1 case|4 cases|
+  |9|게시글 좋아요(생성/취소)|POST|2 cases|2 cases|
   <img width="1000px" alt="스크린샷 2022-07-25 15 17 55" src="https://user-images.githubusercontent.com/89829943/180710823-fbafab97-6779-40e2-a227-778a848afbca.png">
   <img width="1000px" alt="스크린샷 2022-07-25 15 16 29" src="https://user-images.githubusercontent.com/89829943/180710671-915389ab-6f83-4bc5-ab69-27e4e697bac6.png">
 
