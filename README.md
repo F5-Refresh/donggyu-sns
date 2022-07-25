@@ -65,7 +65,7 @@
       - 게시글 목록에는 제목, 작성자, 해시태그, 작성일, 좋아요 수, 조회수 등이 포함됩니다.
       - 검색/정렬/필터링/페이지 기능은 각각 동작할 뿐만 아니라, 동시에 적용될 수 있어야 합니다.
         <br><br>
-        ```
+      ```
         ex) some-url?search=..&order_by=.. (이는 예시이며, 해당변수는 직접 설정할 것)
         
         * Ordering(Sorting, 정렬)
@@ -95,7 +95,7 @@
           
           ex) some-url?offset=0&limit=10 >> 0번 인덱스 게시글부터 10개의 게시글을 가져옵니다.
         
-        ```
+      ```
     - 게시글 상세
       - 모든 사용자는 모든 게시글에 보기권한이 있습니다.
       - 작성자를 포함한 사용자는 본 게시글에 좋아요를 누를 수 있습니다.
@@ -277,10 +277,10 @@
   1. 해당 프로젝트를 clone하고, 프로젝트 폴더로 이동합니다.
   <br>
   
-  ```
-  git clone https://github.com/F5-Refresh/donggyu-sns.git
-  cd project directory
-  ```
+   ```
+   git clone https://github.com/F5-Refresh/donggyu-sns.git
+   cd project directory
+   ```
   
   2. 가상환경을 만들고, 프로젝트에 필요한 python package를 다운받습니다.
   <br>
