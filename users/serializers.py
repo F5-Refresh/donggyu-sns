@@ -5,6 +5,7 @@ from django.contrib.auth.hashers          import check_password
 from rest_framework                       import serializers
 from rest_framework.serializers           import ModelSerializer, Serializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.tokens      import OutstandingToken, BlacklistedToken
 
 from users.models import User
 
@@ -77,6 +78,12 @@ class UserSignInSerializer(TokenObtainPairSerializer):
         """
         if not check_password(password, user.password):
             raise serializers.ValidationError('detail: 올바른 유저정보를 입력하세요.')
+        
+        """
+        토큰 발급 전, 유저의 리프레시 토큰이 이미 존재한다면 모두 사용을 제한합니다.
+        """
+        for token in OutstandingToken.objects.filter(user=user):
+            BlacklistedToken.objects.get_or_create(token=token)
         
         """
         액세스 토큰과 리프레시 토큰을 발급합니다.
