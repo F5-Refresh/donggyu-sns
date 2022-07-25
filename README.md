@@ -1,20 +1,9 @@
 ## Intro
 
 > **원티드X프리온보딩 4주차 개인과제 레포지토리(repository)입니다.**
-
-<br>
-
 - 본 과제에서 요구하는 서비스는 SNS(Social Networking Service)입니다.
 - 사용자는 본 서비스에 접속하여, 본인의 게시글을 업로드하고 관리(수정/삭제/복구)할 수 있습니다.
 - 사용자는 본 서비스에 접속하여, 모든 게시글을 확인하고 좋아요 기능을 사용할 수 있습니다.
-
-<br>
-
-> **목차**
-
-- [Environments](#environments)
-- [Project](#project)
-- [Etc](#etc)
 
 <br>
 <hr>
