@@ -1,9 +1,18 @@
 ## Intro
 
 > **원티드X프리온보딩 4주차 개인과제 레포지토리(repository)입니다.**
+<br>
+
 - 본 과제에서 요구하는 서비스는 SNS(Social Networking Service)입니다.
 - 사용자는 본 서비스에 접속하여, 본인의 게시글을 업로드하고 관리(수정/삭제/복구)할 수 있습니다.
 - 사용자는 본 서비스에 접속하여, 모든 게시글을 확인하고 좋아요 기능을 사용할 수 있습니다.
+
+<br>
+
+> **Index**
+- [Environments](#environments)
+- [Project](#project)
+- [Etc](#etc)
 
 <br>
 <hr>
@@ -34,7 +43,7 @@
 ## Project
 
 > **Period**
-- #### ⚡️ 22.07.19 ~ 22.07.25
+- #### ⚡️ 22.07.19 ~ 22.07.26
 
 <br>
 
@@ -126,11 +135,20 @@
       * 입력받은 이메일과 패스워드가 유저 정보와 일치하는지 확인합니다.
       * 모든 유효성 검사에 통과하면 액세스토큰과 리프레시 토큰을 발급합니다.
       
-    > 로그아웃
-      * 추후 구현예정
+    > 로그아웃: 유저 로그아웃 기능입니다. (DRF-SimpleJwt 활용)
+      * DRF-SimpleJwt의 OutstandingToken, BlacklistedToken model(Table)을 활용했습니다.
+      * 리프레시 토큰은 필수값입니다.
+      * 유효한 토큰인지를 확인합니다.
+      * 만료된 토큰인지를 확인합니다.
+      * 모든 유효성 검사에 통과하면 요청받은 리프레시 토큰을 토큰 블랙리스트에 등록합니다. (기존의 발급된 모든 리프레시 토큰 사용제한)
       
-    > 토큰 재발급
-      * 추후 구현예정
+    > 토큰 재발급: 유저의 토큰을 재발급하는 기능입니다. (DRF-SimpleJwt 활용)
+      * DRF-SimpleJwt의 TokenRefreshView 기능을 활용했습니다.
+      * 리프레시 토큰은 필수값입니다.
+      * 유효한 토큰인지를 확인합니다.
+      * 만료된 토큰인지를 확인합니다.
+      * 토큰의 타입을 확인합니다. (오직 리프레시 토큰만 사용가능)
+      * 모든 유효성 검사에 통과하면 요청받은 리프레시 토큰을 기반으로 액세스토큰을 발급합니다. (리프레시 토큰 추가 발급X)
   
   - 게시글:
     > 게시글 목록: 인증/인가에 통과한 유저는 모든 게시글의 리스트 정보를 조회할 수 있습니다.
@@ -149,7 +167,7 @@
         * 해당 게시글이 존재하는지 확인합니다.
     
     > 게시글 생성: 인증/인가에 통과한 유저는 게시글을 생성(업로드)할 수 있습니다.
-     * 게시글과 여러개의 해시태그를 함께 생성할 수 있습니다.
+      * 게시글과 여러개의 해시태그를 함께 생성할 수 있습니다.
      
     > 게시글 수정: 인증/인가에 통과한 유저는 본인의 게시글을 수정할 수 있습니다.
       * 해당 게시글이 존재하는지, 본인의 게시글인지를 확인합니다.
@@ -172,7 +190,8 @@
 
 > **Modeling**
 - #### 🚀 ERD 구조
-  <img width="1000px" height="550px" alt="스크린샷 2022-07-25 08 53 14" src="https://user-images.githubusercontent.com/89829943/180696903-a4715663-3bcd-41b6-89cf-9f2dcc34966d.png">
+  <img width="1000px" alt="스크린샷 2022-07-26 09 08 13" src="https://user-images.githubusercontent.com/89829943/180895403-641dd300-549b-44f9-ba9e-6e0929cf51e3.png">
+
 
 <br> 
 
@@ -182,13 +201,15 @@
   |---|-----|----|----|----|
   |1|유저 회원가입|POST|api/users/signup|유저 회원가입 기능입니다.|
   |2|유저 로그인|POST|api/users/signin|유저 로그인 기능입니다.|
-  |3|게시글 생성|POST|api/posts|본인의 게시글을 생성합니다.|
-  |4|게시글 리스트|GET|api/posts|모든 게시글 리스트 정보를 조회합니다.|
-  |5|게시글 상세|GET|api/posts/\<int:post_id\>|모든 게시글 상세 정보를 조회합니다.|
-  |6|게시글 수정|PATCH|api/posts/\<int:post_id\>|본인의 게시글을 수정합니다.|
-  |7|게시글 삭제|DELETE|api/posts/\<int:post_id\>|본인의 게시글을 삭제합니다.|
-  |8|게시글 복구|PATCH|api/posts/\<int:post_id\>/restore|본인의 게시글을 복구합니다.|
-  |9|게시글 좋아요(생성/취소)|POST|api/posts/\<int:post_id\>/like|본인 게시글 포함, 모든 게시글의 좋아요 기능을 사용합니다.|
+  |3|유저 로그아웃|POST|api/users/signout|유저 로그아웃 기능입니다.|
+  |4|유저 토큰 재발급|POST|api/users/token/refresh|유저 토큰 재발급 기능입니다.|
+  |5|게시글 생성|POST|api/posts|본인의 게시글을 생성합니다.|
+  |6|게시글 리스트|GET|api/posts|모든 게시글 리스트 정보를 조회합니다.|
+  |7|게시글 상세|GET|api/posts/\<int:post_id\>|모든 게시글 상세 정보를 조회합니다.|
+  |8|게시글 수정|PATCH|api/posts/\<int:post_id\>|본인의 게시글을 수정합니다.|
+  |9|게시글 삭제|DELETE|api/posts/\<int:post_id\>|본인의 게시글을 삭제합니다.|
+  |10|게시글 복구|PATCH|api/posts/\<int:post_id\>/restore|본인의 게시글을 복구합니다.|
+  |11|게시글 좋아요(생성/취소)|POST|api/posts/\<int:post_id\>/like|본인 게시글 포함, 모든 게시글의 좋아요 기능을 사용합니다.|
   
 - #### ✨ Swagger UI
   #### ```✔️ 유저 회원가입``` 
@@ -199,6 +220,14 @@
   <img width="1000px" alt="스크린샷 2022-07-25 14 14 37" src="https://user-images.githubusercontent.com/89829943/180703475-55f6b39e-1d12-4a0d-bfc8-83182b418fb9.png">
   <img width="1000px" alt="스크린샷 2022-07-25 14 15 16" src="https://user-images.githubusercontent.com/89829943/180703483-651ff118-7495-467d-b205-eadc8db1ad9d.png">
   
+  #### ```✔️ 유저 로그아웃```
+  <img width="1000px" alt="스크린샷 2022-07-26 08 18 34" src="https://user-images.githubusercontent.com/89829943/180892659-f66e8e82-48a9-4e71-b691-b3aa06ce98ea.png">
+  <img width="1000px" alt="스크린샷 2022-07-26 08 18 48" src="https://user-images.githubusercontent.com/89829943/180892691-590d6fe5-cfd4-4437-9d00-3faa8721d509.png">
+  
+  #### ```✔️ 유저 토큰 재발급```
+  <img width="1000px" alt="스크린샷 2022-07-26 08 19 13" src="https://user-images.githubusercontent.com/89829943/180892728-a19efbe5-17bb-4157-9f74-d49094c64cf6.png">
+  <img width="1000px" alt="스크린샷 2022-07-26 08 19 49" src="https://user-images.githubusercontent.com/89829943/180892750-47c76600-5fce-4179-aefa-4825981619be.png">
+
   #### ```✔️ 게시글 생성```
   <img width="1000px" alt="스크린샷 2022-07-25 14 19 09" src="https://user-images.githubusercontent.com/89829943/180703881-f7836fb0-edc6-4e39-a34b-5f63487df411.png">
   <img width="1000px" alt="스크린샷 2022-07-25 14 19 34" src="https://user-images.githubusercontent.com/89829943/180703903-9c6a98b3-7e60-49f2-b072-3157285403f1.png">
@@ -238,21 +267,24 @@
 
 > **Test**
 - #### 🚦 테스트코드 작성
-  #### 전체 테스트코드: 59 cases
+  #### 전체 테스트코드: 67 cases
   
   |ID|Feature|Method|Success cases|Fail cases|
   |---|----|----|----|----|
   |1|유저 회원가입|POST|1 case|14 cases|
   |2|유저 로그인|POST|1 case|4 cases|
-  |3|게시글 생성|POST|1 case|4 cases|
-  |4|게시글 리스트|GET|12 cases|1 case|
-  |5|게시글 상세|GET|1 case|2 cases|
-  |6|게시글 수정|PATCH|1 case|3 cases|
-  |7|게시글 삭제|DELETE|1 case|4 cases|
-  |8|게시글 복구|PATCH|1 case|4 cases|
-  |9|게시글 좋아요(생성/취소)|POST|2 cases|2 cases|
-  <img width="1000px" alt="스크린샷 2022-07-25 15 17 55" src="https://user-images.githubusercontent.com/89829943/180710823-fbafab97-6779-40e2-a227-778a848afbca.png">
-  <img width="1000px" alt="스크린샷 2022-07-25 15 16 29" src="https://user-images.githubusercontent.com/89829943/180710671-915389ab-6f83-4bc5-ab69-27e4e697bac6.png">
+  |3|유저 로그아웃|POST|1 case|3 cases|
+  |4|유저 토큰 재발급|POST|1 case|3 cases|
+  |5|게시글 생성|POST|1 case|4 cases|
+  |6|게시글 리스트|GET|12 cases|1 case|
+  |7|게시글 상세|GET|1 case|2 cases|
+  |8|게시글 수정|PATCH|1 case|3 cases|
+  |9|게시글 삭제|DELETE|1 case|4 cases|
+  |10|게시글 복구|PATCH|1 case|4 cases|
+  |11|게시글 좋아요(생성/취소)|POST|2 cases|2 cases|
+  <img width="1000px" alt="스크린샷 2022-07-26 08 24 53" src="https://user-images.githubusercontent.com/89829943/180892935-cf0233dc-2c24-43a3-a07c-06b7e3196b91.png">
+  <img width="1000px" alt="스크린샷 2022-07-26 08 25 13" src="https://user-images.githubusercontent.com/89829943/180892946-d815559f-bc95-4bf1-b69e-1c8df5be5f83.png">
+
 
 <br>
 <hr>
@@ -489,7 +521,9 @@
    ┃ ┗ 📜__init__.py
    ┣ 📂tests
    ┃ ┣ 📜__init__.py
+   ┃ ┣ 📜tests_refesh_token.py
    ┃ ┣ 📜tests_signin.py
+   ┃ ┣ 📜tests_signout.py
    ┃ ┗ 📜tests_signup.py
    ┣ 📜__init__.py
    ┣ 📜admin.py
