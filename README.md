@@ -211,7 +211,7 @@
   |8|게시글 수정|PATCH|api/posts/\<int:post_id\>|본인의 게시글을 수정합니다.|
   |9|게시글 삭제|DELETE|api/posts/\<int:post_id\>|본인의 게시글을 삭제합니다.|
   |10|게시글 복구|PATCH|api/posts/\<int:post_id\>/restore|본인의 게시글을 복구합니다.|
-  |11|게시글 좋아요|POST|api/posts/\<int:post_id\>/like|본인 게시글 포함, 모든 게시글의 좋아요 기능(생성/취소)을 사용합니다.|
+  |11|게시글 좋아요|POST|api/posts/\<int:post_id\>/like|본인 게시글 포함, 모든 게시글의 좋아요 기능을 사용합니다.|
   
 - #### ✨ Swagger UI
   #### ```✔️ 유저 회원가입``` 
@@ -264,7 +264,9 @@
 > **Deploy**
 - #### 🏖 프로젝트 배포
   #### Docker, Nginx, Gunicorn을 사용하여 AWS EC2 서버에 배포했으며, 비용 등의 이유로 현재는 배포를 중단했습니다.
-  <img width="1000px" alt="스크린샷 2022-07-26 10 50 33" src="https://user-images.githubusercontent.com/89829943/180905515-9f43d080-6bc6-48c4-b05d-f6dd8dbf37af.png">
+  <img width="1000px" alt="스크린샷 2022-07-26 11 04 58" src="https://user-images.githubusercontent.com/89829943/180906838-662ec585-e8ab-4572-9f09-da143531c2b3.png">
+
+
 
 
   
