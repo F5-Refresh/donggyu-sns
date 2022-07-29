@@ -330,6 +330,10 @@
   |11|게시글 좋아요(생성/취소)|POST|2 cases|2 cases|
   <img width="1000px" alt="스크린샷 2022-07-26 08 24 53" src="https://user-images.githubusercontent.com/89829943/180892935-cf0233dc-2c24-43a3-a07c-06b7e3196b91.png">
   <img width="1000px" alt="스크린샷 2022-07-26 08 25 13" src="https://user-images.githubusercontent.com/89829943/180892946-d815559f-bc95-4bf1-b69e-1c8df5be5f83.png">
+  
+  #### 테스트 커버리지: 98%
+  <img width="1000px" alt="스크린샷 2022-07-29 16 42 58" src="https://user-images.githubusercontent.com/89829943/181710259-472b46d1-3530-449d-9df7-006554b5dff7.png">
+
 
 
 <br> 
