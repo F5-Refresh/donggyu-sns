@@ -157,7 +157,6 @@ class PostDetailSerializer(ModelSerializer):
             AccessIp.objects\
                     .create(ip=ip, posts=post)
                     
-            return obj.views
         return obj.views
 
     class Meta:
