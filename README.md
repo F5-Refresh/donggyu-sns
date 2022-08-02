@@ -528,7 +528,6 @@
   ```
   📦.github
    ┣ 📂ISSUE_TEMPLATE
-   ┃ ┣ 📜issue-template.md
    ┃ ┗ 📜issue_template.md
    ┗ 📜pull_request_template.md
   📦config
