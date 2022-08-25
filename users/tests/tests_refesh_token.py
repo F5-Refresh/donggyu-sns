@@ -6,7 +6,7 @@ from rest_framework_simplejwt.tokens import OutstandingToken
 from users.models import User
 
 
-class UserRefreshToken(APITestCase):
+class UserRefreshTokenTest(APITestCase):
     """
     Assignee: 김동규
     
