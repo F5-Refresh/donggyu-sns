@@ -120,7 +120,7 @@ class PostDetailView(APIView):
     """
     Assignee: 김동규
     
-    query param: post_id
+    path param: post_id
     return: json
     detail:
       - 인증/인가에 통과한 유저는 모든 게시글을 조회할 수 있습니다.(GET: 게시글 상세 조회 기능)
@@ -204,7 +204,7 @@ class PostRestoreView(APIView):
     """
     Assignee: 김동규
     
-    query param: post_id
+    path param: post_id
     return: json
     detail: 인증/인가에 통과한 유저는 본인의 게시글을 복구할 수 있습니다.(PATCH: 게시글 복구 기능)
     """
@@ -239,7 +239,7 @@ class PostLikeView(APIView):
     """
     Assignee: 김동규
     
-    query param: post_id
+    path param: post_id
     return: json
     detail: 인증/인가에 통과한 유저는 모든 게시글에 "좋아요"를 누르거나 취소할 수 있습니다.(POST: 좋아요 생성/취소 기능)
     """
