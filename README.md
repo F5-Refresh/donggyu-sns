@@ -234,8 +234,6 @@
 - #### 🚀 ERD 구조
   <img width="1000px" alt="스크린샷 2022-07-29 12 20 39" src="https://user-images.githubusercontent.com/89829943/181676315-5b1b79e8-d97c-4382-9b3f-c0399d51a88c.png">
 
-
-
 <br> 
 
 > **API Docs**
@@ -313,13 +311,13 @@
 
 > **Test**
 - #### 🚦 테스트코드 작성
-  #### 전체 테스트코드: 67 cases
+  #### 전체 테스트코드: 69 cases
   
   |ID|Feature|Method|Success cases|Fail cases|
   |---|----|----|----|----|
   |1|유저 회원가입|POST|1 case|14 cases|
   |2|유저 로그인|POST|1 case|4 cases|
-  |3|유저 로그아웃|POST|1 case|3 cases|
+  |3|유저 로그아웃|POST|1 case|5 cases|
   |4|유저 토큰 재발급|POST|1 case|3 cases|
   |5|게시글 생성|POST|1 case|4 cases|
   |6|게시글 리스트|GET|12 cases|1 case|
@@ -328,12 +326,11 @@
   |9|게시글 삭제|DELETE|1 case|4 cases|
   |10|게시글 복구|PATCH|1 case|4 cases|
   |11|게시글 좋아요(생성/취소)|POST|2 cases|2 cases|
-  <img width="1000px" alt="스크린샷 2022-07-26 08 24 53" src="https://user-images.githubusercontent.com/89829943/180892935-cf0233dc-2c24-43a3-a07c-06b7e3196b91.png">
-  <img width="1000px" alt="스크린샷 2022-07-26 08 25 13" src="https://user-images.githubusercontent.com/89829943/180892946-d815559f-bc95-4bf1-b69e-1c8df5be5f83.png">
-  
-  #### 테스트 커버리지: 98%
-  <img width="1000px" alt="스크린샷 2022-07-29 16 42 58" src="https://user-images.githubusercontent.com/89829943/181710259-472b46d1-3530-449d-9df7-006554b5dff7.png">
+  <img width="1000px" alt="스크린샷 2022-08-27 08 54 19" src="https://user-images.githubusercontent.com/89829943/187005182-1f47a1fa-afa5-4cd4-9611-ba9ba672afa3.png">
+  <img width="1000px" alt="스크린샷 2022-08-27 08 54 55" src="https://user-images.githubusercontent.com/89829943/187005190-35cc0477-e83c-409f-88c4-f26ee2593964.png">
 
+  #### 테스트 커버리지: 98%
+  <img width="1000px" alt="스크린샷 2022-08-27 08 57 33" src="https://user-images.githubusercontent.com/89829943/187005332-e75b874d-b4b7-4016-bb62-69c5864d5b52.png">
 
 
 <br> 
