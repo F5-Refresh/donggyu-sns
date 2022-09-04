@@ -124,13 +124,7 @@ class PostRestoreTest(APITestCase):
         response = self.client\
                        .patch('/api/posts/1/restore', content_type='application/json')
                        
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(
-            response.json(),
-            {
-                'detail': '게시글 1(id)가 복구되었습니다.'
-            }
-        )
+        self.assertEqual(response.status_code, 204)
     
     """
     실패 케이스 테스트코드
