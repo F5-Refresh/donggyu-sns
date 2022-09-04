@@ -178,7 +178,7 @@ class PostDetailView(APIView):
             return Response(serializer.data, status=200)
         return Response(serializer.errors, status=400)
     
-    @swagger_auto_schema(responses={200: '게시글이 삭제되었습니다.'}, manual_parameters=[post_id])
+    @swagger_auto_schema(responses={204: '게시글이 삭제되었습니다.'}, manual_parameters=[post_id])
     def delete(self, request, post_id):
         """
         DELETE: 게시글 삭제 기능
@@ -197,7 +197,7 @@ class PostDetailView(APIView):
         
         post.status = 'deleted'
         post.save()
-        return Response({'detail': f'게시글 {post_id}(id)가 삭제되었습니다.'}, status=200)
+        return Response(status=204)
 
 
 class PostRestoreView(APIView):
@@ -213,7 +213,7 @@ class PostRestoreView(APIView):
     
     post_id = openapi.Parameter('post_id', openapi.IN_PATH, required=True, type=openapi.TYPE_INTEGER)
     
-    @swagger_auto_schema(responses={200: '게시글이 복구되었습니다.'}, manual_parameters=[post_id])
+    @swagger_auto_schema(responses={204: '게시글이 복구되었습니다.'}, manual_parameters=[post_id])
     def patch(self, request, post_id):
         """
         PATCH: 게시글 복구 기능
@@ -232,7 +232,7 @@ class PostRestoreView(APIView):
 
         post.status = 'in_posting'
         post.save()
-        return Response({'detail': f'게시글 {post_id}(id)가 복구되었습니다.'}, status=200)
+        return Response(status=204)
     
     
 class PostLikeView(APIView):
