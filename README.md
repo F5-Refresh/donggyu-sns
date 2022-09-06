@@ -238,19 +238,8 @@
 
 > **API Docs**
 - #### 🌈 API 명세서
-  |ID|Feature|Method|URL|Description|
-  |---|----------|----|----|----|
-  |1|유저 회원가입|POST|api/users/signup|유저 회원가입 기능입니다.|
-  |2|유저 로그인|POST|api/users/signin|유저 로그인 기능입니다.|
-  |3|유저 로그아웃|POST|api/users/signout|유저 로그아웃 기능입니다.|
-  |4|유저 토큰 재발급|POST|api/users/token/refresh|유저 토큰 재발급 기능입니다.|
-  |5|게시글 생성|POST|api/posts|본인의 게시글을 생성합니다.|
-  |6|게시글 리스트|GET|api/posts|모든 게시글 리스트 정보를 조회합니다.|
-  |7|게시글 상세|GET|api/posts/\<int:post_id\>|모든 게시글 상세 정보를 조회합니다.|
-  |8|게시글 수정|PATCH|api/posts/\<int:post_id\>|본인의 게시글을 수정합니다.|
-  |9|게시글 삭제|DELETE|api/posts/\<int:post_id\>|본인의 게시글을 삭제합니다.|
-  |10|게시글 복구|PATCH|api/posts/\<int:post_id\>/restore|본인의 게시글을 복구합니다.|
-  |11|게시글 좋아요|POST|api/posts/\<int:post_id\>/like|본인 게시글 포함, 모든 게시글의 좋아요 기능을 사용합니다.|
+  <img width="1000px" alt="스크린샷 2022-09-06 11 03 24" src="https://user-images.githubusercontent.com/89829943/188531576-7ecf4932-795f-4418-a0c3-bfc377014b41.png">
+
   
 - #### ✨ Swagger UI
   #### ```✔️ 유저 회원가입``` 
@@ -304,28 +293,13 @@
 - #### 🏖 프로젝트 배포
   #### Docker, Nginx, Gunicorn을 사용하여 AWS EC2 서버에 배포했으며, 비용 등의 이유로 현재는 배포를 중단했습니다.
   <img width="1000px" alt="스크린샷 2022-07-27 08 47 14" src="https://user-images.githubusercontent.com/89829943/181131164-f9bd2137-1f08-4263-9a31-035cd0435af8.png">
-
-
   
 <br> 
 
 > **Test**
 - #### 🚦 테스트코드 작성
   #### 전체 테스트코드: 69 cases
-  
-  |ID|Feature|Method|Success cases|Fail cases|
-  |---|----|----|----|----|
-  |1|유저 회원가입|POST|1 case|14 cases|
-  |2|유저 로그인|POST|1 case|4 cases|
-  |3|유저 로그아웃|POST|1 case|5 cases|
-  |4|유저 토큰 재발급|POST|1 case|3 cases|
-  |5|게시글 생성|POST|1 case|4 cases|
-  |6|게시글 리스트|GET|12 cases|1 case|
-  |7|게시글 상세|GET|1 case|2 cases|
-  |8|게시글 수정|PATCH|1 case|3 cases|
-  |9|게시글 삭제|DELETE|1 case|4 cases|
-  |10|게시글 복구|PATCH|1 case|4 cases|
-  |11|게시글 좋아요(생성/취소)|POST|2 cases|2 cases|
+  <img width="1000px" alt="스크린샷 2022-09-06 11 00 18" src="https://user-images.githubusercontent.com/89829943/188531360-0b35e5c0-58cd-47f2-b16d-a07cc36ad824.png">
   <img width="1000px" alt="스크린샷 2022-08-27 08 54 19" src="https://user-images.githubusercontent.com/89829943/187005182-1f47a1fa-afa5-4cd4-9611-ba9ba672afa3.png">
   <img width="1000px" alt="스크린샷 2022-08-27 08 54 55" src="https://user-images.githubusercontent.com/89829943/187005190-35cc0477-e83c-409f-88c4-f26ee2593964.png">
 
